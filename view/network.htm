@@ -1,0 +1,68 @@
+<h1 align="center">Network</h1>
+<form id="networkForm" method="post">
+	<table>
+		<tr>
+			<th colspan="2" class="head">IP Settings</th>
+		</tr>
+		<tr>
+			<td colspan="2" class="DHCP">
+				<input id="dynamic" type="radio" name="DHCP" value="dynamic" checked="checked">
+				<div class="tooltip">
+					<label for="dynamic">Get IP dynamically</label>
+					<span class="tooltiptext">The IP is obtained dynamically from the DHCP server (for most users this is the router). Please note that using a dynamic IP, the IP may not be the same each time the device is started up and my change when the IP lease is up.</span>
+				</div>
+				
+			</td>
+			
+		</tr>
+		<tr>
+			<td colspan="2" class="DHCP">
+				<input id="static" type="radio" name="DHCP" value="static">
+				<label for="static">Use Static IP</label>
+			</td>
+		</tr>
+		<tr>
+			<td>IP Address</td>
+			<td class=num><input id="ip1" type="number" name="ip1" min="0" max="255" disabled="true">.<input id="ip2" type="number" name="ip2" min="0" max="255" disabled="true">.<input id="ip3" type="number" name="ip3" min="0" max="255" disabled="true">.<input id="ip4" type="number" name="ip4" min="0" max="255" disabled="true"></td>
+		</tr>
+		<tr>
+			<td>IP Subnet Mask</td>
+			<td class=num><input id="ips1" type="number" name="ips1" min="0" max="255" disabled="true">.<input id="ips2" type="number" name="ips2" min="0" max="255" disabled="true">.<input id="ips3" type="number" name="ips3" min="0" max="255" disabled="true">.<input id="ips4" type="number" name="ips4" min="0" max="255" disabled="true"></td>
+		</tr>
+		<tr>
+			<td>Gateway IP Address</td>
+			<td class=num><input id="gip1" type="number" name="gip1" min="0" max="255" disabled="true">.<input id="gip2" type="number" name="gip2" min="0" max="255" disabled="true">.<input id="gip3" type="number" name="gip3" min="0" max="255" disabled="true">.<input id="gip4" type="number" name="gip4" min="0" max="255" disabled="true"></td>
+		</tr>
+		<tr>
+			<th colspan="2" class="head">MAC Address Settings</th>
+		</tr>
+		<tr>
+			<td colspan="2" class="macSet">
+				<input id="defmac" type="radio" name="mac" checked="checked">
+				<div class="tooltip">
+					<label for="defmac">Use Default MAC Address</label>
+					<span class="tooltiptext">The Default MAC Address is determined by the DS18B20 on the Relay</span>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="macSet">
+				<input id="custommac" type="radio" name="mac">
+				<label for="custommac">Use this MAC Address</label>
+			</td>
+			<td id="mac">
+				<input type="text" name="spoofmac" id="macaddr" maxlength="17" size="17" value="4C:60:DE:3E:E8:75" disabled="true">
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="buttons">
+				<input id="submit" type="submit" name="apply" value="Apply">
+			</td>
+		</tr>
+	</table>
+</form>
+<script>
+	var url = 'script/network.js';
+	$.getScript(url);
+</script>
