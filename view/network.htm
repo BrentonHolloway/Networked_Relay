@@ -6,7 +6,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="DHCP">
-				<input id="dynamic" type="radio" name="DHCP" value="dynamic" checked="checked">
+				<input id="dynamic" type="radio" name="DHCP" value="0" checked="checked">
 				<div class="tooltip">
 					<label for="dynamic">Get IP dynamically</label>
 					<span class="tooltiptext">The IP is obtained dynamically from the DHCP server (for most users this is the router). Please note that using a dynamic IP, the IP may not be the same each time the device is started up and my change when the IP lease is up.</span>
@@ -17,7 +17,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="DHCP">
-				<input id="static" type="radio" name="DHCP" value="static">
+				<input id="static" type="radio" name="DHCP" value="1">
 				<label for="static">Use Static IP</label>
 			</td>
 		</tr>
@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="macSet">
-				<input id="defmac" type="radio" name="mac" checked="checked">
+				<input id="defmac" type="radio" name="mac" value="0" checked="checked">
 				<div class="tooltip">
 					<label for="defmac">Use Default MAC Address</label>
 					<span class="tooltiptext">The Default MAC Address is determined by the DS18B20 on the Relay</span>
@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td class="macSet">
-				<input id="custommac" type="radio" name="mac">
+				<input id="custommac" type="radio" name="mac" value="1">
 				<label for="custommac">Use this MAC Address</label>
 			</td>
 			<td id="mac">
@@ -62,7 +62,7 @@
 		</tr>
 	</table>
 </form>
-<script>
+<script type="text/javascript">
 	var url = 'script/network.js';
 	$.getScript(url);
 </script>

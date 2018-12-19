@@ -17,10 +17,9 @@ $('td.macSet input').click(function(){
 });
 
 $(document).ready(function(){
-	$("form").submit(function(e){
-		alert("Submitted");
+	$("#networkForm").submit(function(e){
 		e.preventDefault();
-		var data = $("#networkForm :input").serializeArray();
-		console.log(data);
+		var data = $("#networkForm :input").serialize();
+		$.post("network", data);
 	});
 });

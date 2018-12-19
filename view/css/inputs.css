@@ -134,10 +134,14 @@ span.slider.round:before {
 	border-radius: 50%;
 }
 
-input[type=date]{
+.timeInput input[type=date]{
 	width: 140px;
 }
 
-input[type=time]{
+.timeInput input[type=time]{
 	width: 140px;
+}
+
+.num input[type=number]{
+	width: 50px;
 }
