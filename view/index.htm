@@ -13,7 +13,18 @@
 </head>
 
 <header>
-	<div id="top"></div>
+	<form method="post">
+		<table>
+			<tr>
+				<td>
+					<h1 id="top">4 Port Relay Board</h1>
+				</td>
+				<td id="topLogout">
+					<input id="logout" type="button" name="logout" value="Logout">
+				</td>
+			</tr>
+		</table>
+	</form>
 </header>
 <body>
 	<div id="flex-container">
@@ -36,7 +47,6 @@
 </footer>
 <script type="text/javascript">
 	$(function(){
-		$("#top").load("top.htm");
 		$("#main").load("welcome.htm");
 	})
 </script>
