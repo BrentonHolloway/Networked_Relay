@@ -1,0 +1,26 @@
+<h1>Relays</h1><table><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 1</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay1" type="checkbox" name="relay1"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 2</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay2" type="checkbox" name="relay2"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 3</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay3" type="checkbox" name="relay3"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 4</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay4" type="checkbox" name="relay4"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 5</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay5" type="checkbox" name="relay5" disabled="true"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 6</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay6" type="checkbox" name="relay6" disabled="true"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 7</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay7" type="checkbox" name="relay7" disabled="true"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr><tr><td><h2 class="head">Relay 8</h2></td><td class="switch"><label class="switch"><input class="relay" id="relay8" type="checkbox" name="relay8" disabled="true"> <span class="slider round"></span></label></td></tr><tr><th class="head" colspan="2"></th></tr></table><script type="text/javascript">$(function(){
+		$.get("relays.val", function(data){
+			var $response=$(data);
+
+			var relay1 = $response.filter('#relay1').text();
+			var relay2 = $response.filter('#relay2').text();
+			var relay3 = $response.filter('#relay3').text();
+			var relay4 = $response.filter('#relay4').text();
+			var relay5 = $response.filter('#relay5').text();
+			var relay6 = $response.filter('#relay6').text();
+			var relay7 = $response.filter('#relay7').text();
+			var relay8 = $response.filter('#relay8').text();
+
+			$('#relay1').prop("checked", parseInt(relay1));
+			$('#relay2').prop("checked", parseInt(relay2));
+			$('#relay3').prop("checked", parseInt(relay3));
+			$('#relay4').prop("checked", parseInt(relay4));
+			$('#relay5').prop("checked", parseInt(relay5));
+			$('#relay6').prop("checked", parseInt(relay6));
+			$('#relay7').prop("checked", parseInt(relay7));
+			$('#relay8').prop("checked", parseInt(relay8));
+		});
+	});
+	
+	var url = 'script/relay.js';
+	$.getScript(url);</script>
