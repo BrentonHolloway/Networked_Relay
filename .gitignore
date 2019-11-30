@@ -1,3 +1,4 @@
 *.code-workspace
 *.hex
 /node_modules
+*.zip

@@ -13,7 +13,6 @@ sass.compiler = require('node-sass');
 gulp.task('sass', function() {
     return gulp.src('./resources/sass/app.scss')
         .pipe(sass.sync({
-            includePaths: ['./node_modules/bootstrap/scss/'],
             outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(sourcemaps.write())
@@ -21,7 +20,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src(['./resources/js/*.js', './node_modules/bootstrap/dist/js/bootstrap.js'])
+    return gulp.src(['./resources/js/*.js'])
         .pipe(uglify({
             outputStyle: 'compressed'
         }))
@@ -32,13 +31,12 @@ gulp.task('js', function() {
 gulp.task('html', function() {
     return gulp.src(['./resources/views/*.htm', './resources/views/*.html'])
         .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest('./public/views'));
+        .pipe(gulp.dest('./public'));
 });
 
-gulp.task('watch', function () {
-    gulp.watch('./resources/sass/**/*.scss', ['sass']);
-    gulp.watch('./resources/sass/**/*.js', ['js']);
-    gulp.watch('./resources/views/**/*.htm', ['htm']);
+gulp.task('images', function() {
+    return gulp.src(['./resources/images/**/*'])
+        .pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('clean-css', function() {
@@ -49,10 +47,26 @@ gulp.task('clean-js', function() {
     return del('./public/js/*');
 });
 
-gulp.task('clean-views', function() {
-    return del('./public/views/*');
+gulp.task('clean-html', function() {
+    return del('./public/*.htm*');
 });
 
-gulp.task('clean-all', gulp.parallel('clean-css', 'clean-js', 'clean-views'));
-gulp.task('build', gulp.parallel('sass', 'js', 'html'))
+gulp.task('clean-images', function() {
+    return del('./public/images/*');
+});
+
+gulp.task('refresh-sass', gulp.series('clean-css', 'sass'));
+gulp.task('refresh-js', gulp.series('clean-js', 'js'));
+gulp.task('refresh-html', gulp.series('clean-html', 'html'));
+gulp.task('refresh-images', gulp.series('clean-images', 'images'));
+
+gulp.task('watch', function () {
+    gulp.watch('./resources/sass/**/*.scss', gulp.series('refresh-sass'));
+    gulp.watch('./resources/js/**/*.js', gulp.series('refresh-js'));
+    gulp.watch('./resources/views/**/*.htm*', gulp.series('refresh-html'));
+    gulp.watch('./resources/images/**/*', gulp.parallel('refresh-images'));
+});
+
+gulp.task('clean-all', gulp.parallel('clean-css', 'clean-js', 'clean-html'));
+gulp.task('build', gulp.parallel('sass', 'js', 'html'));
 gulp.task('default', gulp.series('clean-all', 'build'));

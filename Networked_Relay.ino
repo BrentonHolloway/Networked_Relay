@@ -1,3 +1,17 @@
+/**
+ * Author: Brenton Holloway
+ * URL: https://github.com/BrentonHolloway/Networked_Relay.git
+ * Version: 1.0.0
+ * 
+ * Hardware Requirements
+ * This project is designed to run on an EtherMega designed by FreeTronics
+ * link to the page can be found below. The EtherMega has an Atmel ATmega 2560 MCU.
+ *  
+ * EtherMega: https://www.freetronics.com.au/collections/arduino/products/ethermega-arduino-mega-2560-compatible-with-onboard-ethernet
+ * 
+ */
+
+
 #include <DallasTemperature.h>
 #include <EEPROM.h>
 #include <SPI.h>
